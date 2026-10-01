@@ -1,7 +1,16 @@
 const box = document.querySelector('.clickable');
-let isOrange = false;
+const video = document.querySelector('#mikey');
+let isPlaying = false;
 
 box.addEventListener('click', () => {
-  isOrange = !isOrange;
-  box.setAttribute('color', isOrange ? 'orange' : 'white');
+  console.log('box was clicked!');
+  isPlaying = !isPlaying;
+
+  if (isPlaying) {
+    box.setAttribute('material', 'src: #mikey');
+    video.play().catch(err => console.log('video problem:', err));
+  } else {
+    video.pause();
+    box.setAttribute('material', 'src: #meme');
+  }
 });
