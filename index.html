@@ -16,46 +16,107 @@
 <body> 
 
   
-  <a-asset>
-    <img id ="meme" src ="images/IMG_2598.JPG">
-
-    <a-asset-item
-    id="maccy"
-    src="images/pool0335_wm.glb"
-    >
-    </a-asset-item>
- </a-asset> 
-
- <a-scene> 
 
 
+<a-scene>
+  <a-assets>
+    <img id="meme" src="images/IMG_2598.JPG">
+    <a-asset-item id="maccy" src="images/macdonald.glb"></a-asset-item>
+  </a-assets>
 
-    <a-glft-model
-        position="0 0 0"
-    scale="200 200 200"
-    src="#maccy">
+  <a-gltf-model 
+    src="#maccy" 
+    position="-1 0 -5" 
+    scale="10 10 10"
+    animation=" 
+      property: rotation; 
+      to: 0 -360 0; 
+      loop: true; 
+      dur: 4000; 
+      easing: linear"
+      animation__2="
+      property: position;
+      from: -1 0 -5;
+      to: -1 0.25 -5;
+      dir: alternate;
+      dur: 1000;
+      easing: easeInOutSine;
+      loop: true"
+      animation__3="
+      property: scale;
+      from: 40 40 40;
+      to: 10 10 10;
+      dir: alternate;
+      loop: true;
+      dur:500;
+      easing: easeInOutSine">
+  </a-gltf-model>
+
+  <a-box 
+    class="clickable" 
+    position="0 1 -3" 
+    material="src: #meme"
+     animation=" 
+      property: rotation; 
+      to: 0 360 0; 
+      loop: true; 
+      dur: 10000; 
+      easing: linear"
+      animation__2="
+      property: position;
+      from: 0 1 -3;
+      to: 0 1.25 -3;
+      dir: alternate;
+      dur: 2000;
+      easing: easeInOutSine;
+      loop: true">
+
+  </a-box>
+
+  <a-entity 
+    id="rig" 
+    position="0 0 0"> 
   
-    </a-glft-model>
+    <a-camera 
+      position="0 1.6 0" 
+      wasd-controls 
+      look-controls> 
+    <a-cursor 
+    raycaster="objects: .clickable" 
+    color="white"> 
+    </a-cursor> 
 
-   <a-box 
-     position="0 1 -3" 
-     color="#ff2a8a" 
-     material="color: #f1c772; normalMap: #brick_diffuse"
-     src="#meme">
-    
-   </a-box> 
- 
-   <a-plane 
-     active="false"
-     position="0 0 -4" 
-     rotation="-90 0 0" 
-     width="10" 
-     height="10" 
-     color="#7f7e3c"> 
+    </a-camera> 
+  
+  </a-entity>  
+
+  <a-plane 
+    active="false" 
+    position="0 0 -4" 
+    rotation="-90 0 0" 
+    width="10" 
+    height="10" 
+    color="#7f7e3c" 
+    visible="false"> 
    </a-plane> 
- 
+
+  <a-text 
+    value="Hello :3" 
+    position="-0.35 2 -5">
+  </a-text>
+
+
    <a-sky color="#241b2f"></a-sky> 
-   <a-entity environment="preset: forest; dressingUniformScale: false; fog: 0.9; ground: canyon; groundColor: #505106; groundYScale: 8; horizonColor: #4a668e; lighting: point; seed: 3; shadow: true; shadowSize: 50; skyColor: #24347e"></a-entity>
+
+
+    <a-entity 
+    light=" 
+      type: ambient; 
+      color: #00469c; 
+      intensity: 0.5"> 
+    </a-entity> 
+
+   <a-entity environment="preset: forest; dressingUniformScale: false; fog: 0.9; ground: canyon; groundColor: #505106; groundYScale: 8; horizonColor: #4a668e; seed: 3; shadow: true; shadowSize: 50; skyColor: #24347e"></a-entity>
  </a-scene> 
  
 </body> 
